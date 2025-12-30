@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Login Admin</h2>
+<form method="post">
+  <input name="username" placeholder="Username"><br>
+  <input name="password" type="password" placeholder="Password"><br>
+  <button>Login</button>
+</form>
+</body>
+</html>
+<h2>Dashboard Stok</h2>
+<a href="/barang">Tambah Barang</a> |
+<a href="/export">Export Excel</a> |
+<a href="/logout">Logout</a>
+
+<table border="1">
+<tr><th>Nama</th><th>Stok</th><th>Masuk</th><th>Keluar</th></tr>
+{% for b in data %}
+<tr>
+<td>{{b[2]}}</td>
+<td>{{b[4]}}</td>
+<td>
+<form action="/masuk/{{b[0]}}" method="post">
+<input name="jumlah" type="number">
+<button>+</button>
+</form>
+</td>
+<td>
+<form action="/keluar/{{b[0]}}" method="post">
+<input name="jumlah" type="number">
+<button>-</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+<h2>Data Barang</h2>
+<form method="post">
+<input name="kode" placeholder="Kode">
+<input name="nama" placeholder="Nama">
+<input name="kategori" placeholder="Kategori">
+<input name="stok" type="number" placeholder="Stok">
+<input name="satuan" placeholder="Satuan">
+<button>Simpan</button>
+</form>
+{
+  "name": "Stok Bengkel Motor",
+  "short_name": "Bengkel",
+  "start_url": "/",
+  "display": "standalone"
+}
